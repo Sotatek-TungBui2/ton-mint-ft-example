@@ -22,7 +22,7 @@ PROGRAM{
     EQUAL	//  _6
     333 THROWIFNOT
   }>
-  pack_jetton_wallet_data PROCINLINE:<{
+  pack_jetton_wallet_data PROC:<{
     //  balance owner_address jetton_master_address jetton_wallet_code
     NEWC	//  balance owner_address jetton_master_address jetton_wallet_code _4
     s0 s4 XCHG2	//  jetton_wallet_code owner_address jetton_master_address _4 balance
@@ -34,7 +34,7 @@ PROGRAM{
     STREF	//  _8
     ENDC	//  _9
   }>
-  calculate_jetton_wallet_state_init PROCINLINE:<{
+  calculate_jetton_wallet_state_init PROC:<{
     //  owner_address jetton_master_address jetton_wallet_code
     0 PUSHINT	//  owner_address jetton_master_address jetton_wallet_code _3=0
     s0 s1 s2 XCPUXC
@@ -49,7 +49,7 @@ PROGRAM{
     1 STU	//  _13
     ENDC	//  _14
   }>
-  calculate_jetton_wallet_address PROCINLINE:<{
+  calculate_jetton_wallet_address PROC:<{
     //  state_init
     HASHCU	//  _1
     0 PUSHINT	//  _1 _2
@@ -61,12 +61,12 @@ PROGRAM{
     ENDC	//  _11
     CTOS	//  _12
   }>
-  calculate_user_jetton_wallet_address PROCINLINE:<{
+  calculate_user_jetton_wallet_address PROC:<{
     //  owner_address jetton_master_address jetton_wallet_code
     calculate_jetton_wallet_state_init INLINECALLDICT	//  _3
     calculate_jetton_wallet_address INLINECALLDICT	//  _4
   }>
-  load_data PROCINLINE:<{
+  load_data PROC:<{
     // 
     c4 PUSH	//  _1
     CTOS	//  ds
@@ -76,7 +76,7 @@ PROGRAM{
     LDREF	//  _3 _5 _7 _18 _17
     DROP	//  _3 _5 _7 _9
   }>
-  save_data PROCINLINE:<{
+  save_data PROC:<{
     //  balance owner_address jetton_master_address jetton_wallet_code
     pack_jetton_wallet_data INLINECALLDICT	//  _4
     c4 POP

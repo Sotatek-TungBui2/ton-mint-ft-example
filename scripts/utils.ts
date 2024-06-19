@@ -13,9 +13,14 @@ export const waitForStateChange = async <T>(ui: UIProvider, cb: () => Promise<T>
         }
         ui.setActionPrompt(`Attempt ${attempt}\n`);
         await sleep(2000);
-        stateAfter = await cb();
+        try {
+            stateAfter = await cb();
+        } catch (_) {
+            // ignore error
+        }
         attempt++;
     }
+
     ui.clearActionPrompt();
     return stateAfter;
 }

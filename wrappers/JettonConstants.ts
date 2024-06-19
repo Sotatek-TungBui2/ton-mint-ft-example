@@ -5,7 +5,7 @@ export abstract class Op {
     static excesses = 0xd53276db;
     static burn = 0x595f07bc;
     static burn_notification = 0x7bdd97de;
-    
+
     static provide_wallet_address = 0x2c76b973;
     static take_wallet_address = 0xd1735400;
     static mint = 21;
@@ -15,7 +15,7 @@ export abstract class Op {
 
 export abstract class Errors {
     static invalid_op = 709;
-    static not_admin  = 73;
+    static not_admin = 73;
     static unouthorized_burn = 74;
     static discovery_fee_not_matched = 75;
     static wrong_op = 0xffff;
@@ -24,7 +24,7 @@ export abstract class Errors {
     static not_enough_gas = 707;
     static not_valid_wallet = 707;
     static wrong_workchain = 333;
-    static balance_error   = 706;
+    static balance_error = 706;
 }
 
 
